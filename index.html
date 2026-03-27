@@ -1,133 +1,287 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Area 51 Food Park</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      background-color: #000;
-      color: #39ff14;
-      font-family: 'Orbitron', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background: #050505;
-      padding: 30px 0;
-      border-bottom: 2px solid #39ff14;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 3em;
-    }
-    nav {
-      margin-top: 10px;
-    }
-    nav a {
-      color: #39ff14;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #00ffff;
-    }
-    section {
-      padding: 50px 20px;
-      border-bottom: 1px solid #39ff14;
-    }
-    h2 {
-      text-decoration: underline;
-      font-size: 2em;
-      margin-bottom: 20px;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-      font-size: 1.2em;
-    }
-    li {
-      margin: 10px 0;
-    }
-    footer {
-      padding: 20px;
-      border-top: 2px solid #39ff14;
-      background: #050505;
-      font-size: 1em;
-    }
-    /* Optional hover glow effect for sections */
-    section:hover {
-      box-shadow: 0 0 20px #00ffff;
-      transition: box-shadow 0.5s;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area 51 Food Park</title>
+    <!-- Google Fonts for a futuristic feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: 'Lora', sans-serif;
+            color: #fff;
+            background: url('https://images.unsplash.com/photo-1593642532973-d31b6557fa68?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MjA3fDB8MHwxfHNlYXJjaHwxfHxzcGFjZXxlbnwwfHx8fDE2ODgxODQ5ODU&ixlib=rb-4.0.3&q=80&w=1080') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-bottom: 3px solid #00ffcc;
+        }
+
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3em;
+            color: #00ffcc;
+            margin: 0;
+            text-shadow: 0 0 15px #00ffcc;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            background: rgba(0,0,0,0.8);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav a {
+            color: #ff00ff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #00ffcc;
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            margin: 20px auto;
+            border-radius: 20px;
+            max-width: 1200px;
+        }
+
+        section h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5em;
+            color: #ffcc00;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px #ffcc00;
+        }
+
+        /* Cards */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid #00ffcc;
+            border-radius: 15px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #00ffcc;
+        }
+
+        .card img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        /* Calendar */
+        table {
+            width: 90%;
+            max-width: 700px;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #444;
+        }
+
+        th {
+            background: #222;
+            color: #ff00ff;
+        }
+
+        td {
+            background: rgba(0,0,0,0.5);
+            color: #00ffcc;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.8);
+            border-top: 3px solid #ff00ff;
+            color: #aaa;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <h1>👽 Area 51 Food Park</h1>
-    <nav>
-      <a href="#vendors">Vendors</a>
-      <a href="#food-trucks">Food Trucks</a>
-      <a href="#soccer">Soccer</a>
-      <a href="#music">Music</a>
-      <a href="#events">Events</a>
-    </nav>
-  </header>
+<header>
+    <h1>Area 51 Food Park</h1>
+</header>
 
-  <section id="vendors">
-    <h2>🍔 Vendors</h2>
-    <ul>
-      <li>Galactic Burgers</li>
-      <li>Alien Tacos</li>
-      <li>Interstellar Snacks</li>
-    </ul>
-  </section>
+<nav>
+    <a href="#vendors">Vendors</a>
+    <a href="#food-trucks">Food Trucks</a>
+    <a href="#soccer">Soccer</a>
+    <a href="#music">Music</a>
+    <a href="#events">Events</a>
+    <a href="#calendar">Calendar</a>
+</nav>
 
-  <section id="food-trucks">
-    <h2>🚚 Food Trucks</h2>
-    <ul>
-      <li>Space Fries Truck</li>
-      <li>Moon Pizza Express</li>
-      <li>Cosmic Ice Cream</li>
-    </ul>
-  </section>
+<!-- Vendors Section -->
+<section id="vendors">
+    <h2>Vendors</h2>
+    <div class="card-container">
+        <div class="card">
+            <img src="https://img.icons8.com/emoji/96/shop-emoji.png" alt="Vendor">
+            Vendor 1
+        </div>
+        <div class="card">
+            <img src="https://img.icons8.com/emoji/96/shop-emoji.png" alt="Vendor">
+            Vendor 2
+        </div>
+        <div class="card">
+            <img src="https://img.icons8.com/emoji/96/shop-emoji.png" alt="Vendor">
+            Vendor 3
+        </div>
+    </div>
+</section>
 
-  <section id="soccer">
-    <h2>⚽ Soccer</h2>
-    <ul>
-      <li>Friday Night Matches</li>
-      <li>Weekend Watch Parties</li>
-      <li>Family Friendly Games</li>
-    </ul>
-  </section>
+<!-- Food Trucks Section -->
+<section id="food-trucks">
+    <h2>Food Trucks</h2>
+    <div class="card-container">
+        <div class="card">
+            <img src="https://img.icons8.com/emoji/96/french-fries-emoji.png" alt="Food Truck">
+            Taco Truck
+        </div>
+        <div class="card">
+            <img src="https://img.icons8.com/emoji/96/hamburger-emoji.png" alt="Food Truck">
+            Burger Truck
+        </div>
+        <div class="card">
+            <img src="https://img.icons8.com/emoji/96/pizza-emoji.png" alt="Food Truck">
+            Pizza Truck
+        </div>
+    </div>
+</section>
 
-  <section id="music">
-    <h2>🎶 Music Performers</h2>
-    <ul>
-      <li>The Alien Rockers</li>
-      <li>Meteor Beats</li>
-      <li>UFO Jam Band</li>
-    </ul>
-  </section>
+<!-- Soccer Section -->
+<section id="soccer">
+    <h2>Soccer Matches</h2>
+    <div class="card-container">
+        <div class="card">
+            <img src="https://img.icons8.com/emoji/96/soccer-ball-emoji.png" alt="Soccer">
+            Match 1: 3 PM
+        </div>
+        <div class="card">
+            <img src="https://img.icons8.com/emoji/96/soccer-ball-emoji.png" alt="Soccer">
+            Match 2: 5 PM
+        </div>
+    </div>
+</section>
 
-  <section id="events">
-    <h2>🛸 Events</h2>
-    <ul>
-      <li>Alien Costume Contest</li>
-      <li>Space Trivia Nights</li>
-      <li>Galactic Art & Crafts</li>
-    </ul>
-  </section>
+<!-- Music Section -->
+<section id="music">
+    <h2>Music Performers</h2>
+    <div class="card-container">
+        <div class="card">
+            <img src="https://img.icons8.com/emoji/96/musical-notes-emoji.png" alt="Music">
+            DJ Alien
+        </div>
+        <div class="card">
+            <img src="https://img.icons8.com/emoji/96/musical-notes-emoji.png" alt="Music">
+            Cosmic Band
+        </div>
+    </div>
+</section>
 
-  <footer>
-    <p>📍 Visit us at [12275 Potranco Rd, San Antonio TX 78253]</p>
-    <p>© 2026 Area 51 Food Park</p>
-  </footer>
+<!-- Events Section -->
+<section id="events">
+    <h2>Events</h2>
+    <div class="card-container">
+        <div class="card">
+            <img src="https://img.icons8.com/emoji/96/ufo-emoji.png" alt="Event">
+            Alien Meet & Greet
+        </div>
+        <div class="card">
+            <img src="https://img.icons8.com/emoji/96/ufo-emoji.png" alt="Event">
+            Space Costume Contest
+        </div>
+    </div>
+</section>
+
+<!-- Calendar Section -->
+<section id="calendar">
+    <h2>Schedule Calendar</h2>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Activity</th>
+        </tr>
+        <tr>
+            <td>Mar 28</td>
+            <td>Soccer Match 1</td>
+        </tr>
+        <tr>
+            <td>Mar 29</td>
+            <td>Music Performer DJ Alien</td>
+        </tr>
+        <tr>
+            <td>Mar 30</td>
+            <td>Food Truck Specials</td>
+        </tr>
+    </table>
+</section>
+
+<footer>
+    &copy; 2026 Area 51 Food Park. All Rights Reserved.
+</footer>
 
 </body>
 </html> 
+
+"<!-- Flyers Section -->
+<section id="flyers">
+    <h2>Event Flyers</h2>
+    <div class="card-container">
+        <div class="card">
+            <img src="flyer1.jpg" alt="Cosmic Night Flyer" style="width:100%; border-radius:10px;">
+            Cosmic Night - Mar 28
+        </div>
+        <div class="card">
+            <img src="flyer2.jpg" alt="Food Truck Event Flyer" style="width:100%; border-radius:10px;">
+            Food Truck Specials - Mar 30
+        </div>
+    </div>
+</section>"
