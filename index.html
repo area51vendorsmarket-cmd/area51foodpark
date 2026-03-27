@@ -1,287 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Area 51 Food Park</title>
-    <!-- Google Fonts for a futuristic feel -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* General Styles */
-        body {
-            margin: 0;
-            font-family: 'Lora', sans-serif;
-            color: #fff;
-            background: url('https://images.unsplash.com/photo-1593642532973-d31b6557fa68?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MjA3fDB8MHwxfHNlYXJjaHwxfHxzcGFjZXxlbnwwfHx8fDE2ODgxODQ5ODU&ixlib=rb-4.0.3&q=80&w=1080') no-repeat center center fixed;
-            background-size: cover;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Area 51 Food Park</title>
 
-        /* Header */
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            background: rgba(0, 0, 0, 0.7);
-            border-bottom: 3px solid #00ffcc;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
-        header h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3em;
-            color: #00ffcc;
-            margin: 0;
-            text-shadow: 0 0 15px #00ffcc;
-        }
+<style>
 
-        /* Navigation */
-        nav {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            background: rgba(0,0,0,0.8);
-            padding: 10px 0;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
+body {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    background: radial-gradient(circle at top, #1a0033, #000);
+    overflow-x: hidden;
+}
 
-        nav a {
-            color: #ff00ff;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
-            transition: color 0.3s;
-        }
+/* STAR BACKGROUND */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png');
+    animation: moveStars 60s linear infinite;
+    z-index: -2;
+}
 
-        nav a:hover {
-            color: #00ffcc;
-        }
+@keyframes moveStars {
+    from { transform: translate(0,0); }
+    to { transform: translate(-500px, -500px); }
+}
 
-        /* Sections */
-        section {
-            padding: 60px 20px;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.6);
-            margin: 20px auto;
-            border-radius: 20px;
-            max-width: 1200px;
-        }
+/* UFO ANIMATION */
+.ufo {
+    position: fixed;
+    width: 120px;
+    animation: flyUFO linear infinite;
+    z-index: -1;
+}
 
-        section h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5em;
-            color: #ffcc00;
-            margin-bottom: 30px;
-            text-shadow: 0 0 10px #ffcc00;
-        }
+.ufo1 { top: 10%; left: -150px; animation-duration: 25s; }
+.ufo2 { top: 40%; left: -200px; animation-duration: 35s; }
+.ufo3 { top: 70%; left: -180px; animation-duration: 30s; }
 
-        /* Cards */
-        .card-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
+@keyframes flyUFO {
+    from { transform: translateX(0); }
+    to { transform: translateX(120vw); }
+}
 
-        .card {
-            background: rgba(255,255,255,0.05);
-            border: 2px solid #00ffcc;
-            border-radius: 15px;
-            padding: 20px;
-            width: 250px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+/* HEADINGS */
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: #39ff14;
+    text-shadow: 0 0 20px #39ff14, 0 0 40px #00ffff;
+}
 
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px #00ffcc;
-        }
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #00ffff;
+    text-shadow: 0 0 15px #00ffff;
+}
 
-        .card img {
-            width: 100px;
-            height: 100px;
-            object-fit: contain;
-            margin-bottom: 10px;
-        }
+/* SECTIONS */
+.section {
+    padding: 50px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+}
 
-        /* Calendar */
-        table {
-            width: 90%;
-            max-width: 700px;
-            margin: 0 auto;
-            border-collapse: collapse;
-        }
+.container {
+    max-width: 1000px;
+    margin: auto;
+}
 
-        th, td {
-            padding: 12px;
-            border: 1px solid #444;
-        }
+/* IMAGES */
+img {
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 20px;
+    box-shadow: 0 0 20px #00ffff;
+}
 
-        th {
-            background: #222;
-            color: #ff00ff;
-        }
+/* EDIT BOX */
+.edit-box {
+    margin-top: 15px;
+    padding: 15px;
+    border: 2px dashed #39ff14;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.5);
+}
 
-        td {
-            background: rgba(0,0,0,0.5);
-            color: #00ffcc;
-        }
+.edit-box input, .edit-box textarea {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: rgba(0,0,0,0.8);
-            border-top: 3px solid #ff00ff;
-            color: #aaa;
-        }
+/* FLOATING ICONS */
+.icon {
+    position: absolute;
+    font-size: 30px;
+    animation: float 6s ease-in-out infinite;
+}
 
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+
+</style>
 </head>
+
 <body>
 
-<header>
-    <h1>Area 51 Food Park</h1>
-</header>
+<!-- UFOs -->
+<img src="https://cdn-icons-png.flaticon.com/512/3212/3212608.png" class="ufo ufo1">
+<img src="https://cdn-icons-png.flaticon.com/512/3212/3212608.png" class="ufo ufo2">
+<img src="https://cdn-icons-png.flaticon.com/512/3212/3212608.png" class="ufo ufo3">
 
-<nav>
-    <a href="#vendors">Vendors</a>
-    <a href="#food-trucks">Food Trucks</a>
-    <a href="#soccer">Soccer</a>
-    <a href="#music">Music</a>
-    <a href="#events">Events</a>
-    <a href="#calendar">Calendar</a>
-</nav>
+<h1>AREA 51 FOOD PARK</h1>
 
-<!-- Vendors Section -->
-<section id="vendors">
-    <h2>Vendors</h2>
-    <div class="card-container">
-        <div class="card">
-            <img src="https://img.icons8.com/emoji/96/shop-emoji.png" alt="Vendor">
-            Vendor 1
-        </div>
-        <div class="card">
-            <img src="https://img.icons8.com/emoji/96/shop-emoji.png" alt="Vendor">
-            Vendor 2
-        </div>
-        <div class="card">
-            <img src="https://img.icons8.com/emoji/96/shop-emoji.png" alt="Vendor">
-            Vendor 3
-        </div>
-    </div>
-</section>
+<div class="container">
 
-<!-- Food Trucks Section -->
-<section id="food-trucks">
-    <h2>Food Trucks</h2>
-    <div class="card-container">
-        <div class="card">
-            <img src="https://img.icons8.com/emoji/96/french-fries-emoji.png" alt="Food Truck">
-            Taco Truck
-        </div>
-        <div class="card">
-            <img src="https://img.icons8.com/emoji/96/hamburger-emoji.png" alt="Food Truck">
-            Burger Truck
-        </div>
-        <div class="card">
-            <img src="https://img.icons8.com/emoji/96/pizza-emoji.png" alt="Food Truck">
-            Pizza Truck
-        </div>
-    </div>
-</section>
+<!-- VENDORS -->
+<div class="section">
+<h2>Vendors</h2>
 
-<!-- Soccer Section -->
-<section id="soccer">
-    <h2>Soccer Matches</h2>
-    <div class="card-container">
-        <div class="card">
-            <img src="https://img.icons8.com/emoji/96/soccer-ball-emoji.png" alt="Soccer">
-            Match 1: 3 PM
-        </div>
-        <div class="card">
-            <img src="https://img.icons8.com/emoji/96/soccer-ball-emoji.png" alt="Soccer">
-            Match 2: 5 PM
-        </div>
-    </div>
-</section>
+<img src=".jpg">
+<img src="YOUR_IMAGE_2.jpg">
+<img src="YOUR_IMAGE_3.jpg">
 
-<!-- Music Section -->
-<section id="music">
-    <h2>Music Performers</h2>
-    <div class="card-container">
-        <div class="card">
-            <img src="https://img.icons8.com/emoji/96/musical-notes-emoji.png" alt="Music">
-            DJ Alien
-        </div>
-        <div class="card">
-            <img src="https://img.icons8.com/emoji/96/musical-notes-emoji.png" alt="Music">
-            Cosmic Band
-        </div>
-    </div>
-</section>
+<div class="edit-box">
+<input placeholder="Event Time">
+<textarea placeholder="Vendor details..."></textarea>
+</div>
+</div>
 
-<!-- Events Section -->
-<section id="events">
-    <h2>Events</h2>
-    <div class="card-container">
-        <div class="card">
-            <img src="https://img.icons8.com/emoji/96/ufo-emoji.png" alt="Event">
-            Alien Meet & Greet
-        </div>
-        <div class="card">
-            <img src="https://img.icons8.com/emoji/96/ufo-emoji.png" alt="Event">
-            Space Costume Contest
-        </div>
-    </div>
-</section>
+<!-- SPACE TO PARTY -->
+<div class="section">
+<h2>"Space" to Party</h2>
 
-<!-- Calendar Section -->
-<section id="calendar">
-    <h2>Schedule Calendar</h2>
-    <table>
-        <tr>
-            <th>Date</th>
-            <th>Activity</th>
-        </tr>
-        <tr>
-            <td>Mar 28</td>
-            <td>Soccer Match 1</td>
-        </tr>
-        <tr>
-            <td>Mar 29</td>
-            <td>Music Performer DJ Alien</td>
-        </tr>
-        <tr>
-            <td>Mar 30</td>
-            <td>Food Truck Specials</td>
-        </tr>
-    </table>
-</section>
+<!-- Party icons -->
+<div class="icon" style="left:10%;">🎉</div>
+<div class="icon" style="left:80%;">🎈</div>
 
-<footer>
-    &copy; 2026 Area 51 Food Park. All Rights Reserved.
-</footer>
+<img src="YOUR_IMAGE_4.jpg">
+
+<div class="edit-box">
+<input placeholder="Time">
+<textarea placeholder="Party details..."></textarea>
+</div>
+</div>
+
+<!-- SOCCER -->
+<div class="section">
+<h2>Soccer</h2>
+
+<div class="icon" style="left:20%;">⚽</div>
+<div class="icon" style="left:70%;">⚽</div>
+
+<div class="edit-box">
+<input placeholder="Game times">
+<textarea placeholder="Details..."></textarea>
+</div>
+</div>
+
+<!-- VOLLEYBALL -->
+<div class="section">
+<h2>Volleyball</h2>
+
+<div class="icon" style="left:25%;">🏐</div>
+<div class="icon" style="left:75%;">🏐</div>
+
+<div class="edit-box">
+<input placeholder="Game times">
+<textarea placeholder="Details..."></textarea>
+</div>
+</div>
+
+<!-- EVENTS -->
+<div class="section">
+<h2>Events</h2>
+
+<div class="icon" style="left:15%;">✨</div>
+<div class="icon" style="left:85%;">🚀</div>
+
+<div class="edit-box">
+<input placeholder="Event time">
+<textarea placeholder="Event details..."></textarea>
+</div>
+</div>
+
+<!-- FOOD TRUCKS -->
+<div class="section">
+<h2>Food Trucks</h2>
+
+<div class="icon" style="left:20%;">🍔</div>
+<div class="icon" style="left:70%;">🌮</div>
+
+<div class="edit-box">
+<textarea placeholder="Food trucks list..."></textarea>
+</div>
+</div>
+
+<!-- AFTER HOURS -->
+<div class="section">
+<h2>Area 51 After Hours</h2>
+
+<div class="icon" style="left:30%;">🌙</div>
+<div class="icon" style="left:80%;">🛸</div>
+
+<div class="edit-box">
+<input placeholder="Time">
+<textarea placeholder="Details..."></textarea>
+</div>
+</div>
+
+<!-- MUSIC -->
+<div class="section">
+<h2>Music Performers</h2>
+
+<div class="icon" style="left:20%;">🎵</div>
+<div class="icon" style="left:70%;">🎧</div>
+
+<div class="edit-box">
+<input placeholder="Performance time">
+<textarea placeholder="Artist info..."></textarea>
+</div>
+</div>
+
+</div>
 
 </body>
-</html> 
-
-"<!-- Flyers Section -->
-<section id="flyers">
-    <h2>Event Flyers</h2>
-    <div class="card-container">
-        <div class="card">
-            <img src="flyer1.jpg" alt="Cosmic Night Flyer" style="width:100%; border-radius:10px;">
-            Cosmic Night - Mar 28
-        </div>
-        <div class="card">
-            <img src="flyer2.jpg" alt="Food Truck Event Flyer" style="width:100%; border-radius:10px;">
-            Food Truck Specials - Mar 30
-        </div>
-    </div>
-</section>"
+</html>
