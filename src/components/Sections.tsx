@@ -1,0 +1,225 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowRight, X } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import foodTrucks from "@/assets/food-trucks.jpg";
+import soccer from "@/assets/soccer.jpg";
+import events from "@/assets/events.jpg";
+import afterHours from "@/assets/after-hours.jpg";
+import partySpace from "@/assets/party-space.jpg";
+
+type SectionLink = {
+  label: string;
+  url: string;
+};
+
+type Section = {
+  id: string;
+  title: string;
+  tagline: string;
+  image: string;
+  description: string;
+  boldLead?: string;
+  highlights: string[];
+  href?: string;
+  externalLink?: SectionLink;
+};
+
+const sections: Section[] = [
+  {
+    id: "soccer",
+    title: "Soccer",
+    tagline: "Pickup games & league nights",
+    image: soccer,
+    description:
+      "Lace up and hit the pitch. Our on-site soccer field hosts pickup games, weekend leagues, and watch parties for the matches that matter most.",
+    highlights: ["On-site field", "League & pickup play", "Live match watch parties", "Family viewing area"],
+    href: "/soccer",
+  },
+  {
+    id: "food-trucks",
+    title: "Food Trucks",
+    tagline: "A galaxy of flavors",
+    image: foodTrucks,
+    description:
+      "Come try food that is out of this world! Our food trucks serve flavors you didn't know existed. Bold flavors, unique food trucks, and a laid-back atmosphere perfect for hanging out. Bring your friends, bring your appetite, and come discover your new favorite bite. Entry is easy... leaving without dessert? Nearly impossible.",
+    highlights: [
+      "El Pinguino Loco",
+      "The Magic Churro",
+      "Halal Cousins",
+      "The Reaper",
+      "Sazon Caribeno",
+      "Noods",
+      "Jamaican Vybze",
+      "Los Santos Tacos",
+      "Pollo Al Carbon",
+    ],
+  },
+  {
+    id: "events",
+    title: "Events",
+    tagline: "Live music every weekend",
+    image: events,
+    description:
+      "Friday and Saturday nights come alive with live bands, DJs, and themed events. Private bookings welcome for birthdays, parties, and corporate gatherings.",
+    highlights: ["Live music Fri & Sat", "Themed nights", "Private event bookings", "All-ages welcome"],
+    externalLink: {
+      label: "Looking for vendors? Register here",
+      url: "https://forms.gle/ddTJoXK5LDoGSvdD7",
+    },
+  },
+  {
+    id: "after-hours",
+    title: "Area 51 After Hours",
+    tagline: "Fridays & Saturdays · Casino Entertainment · 18+ Entry Minimum, 21+ Alcohol",
+    image: afterHours,
+    boldLead: "Private Entertainment.",
+    description:
+      "After dark, the park shifts into a high-energy nightlife zone — a fusion of casino glamour and bold, after-hours edge. Picture neon-lit tables, pulsing party lights, and women in striking nightlife looks bringing the room to life. It's all show, all atmosphere, all vibe — a cosmic lounge built for grown folks who want a night they'll actually remember.",
+    highlights: [
+      "$20 entry at the door",
+      "Casino tables, lights & party atmosphere",
+      "Alcohol service & pole dancing",
+      "Entertainment only — no real money or gambling",
+      "No inappropriate behavior tolerated",
+      "ID check required before entering",
+    ],
+  },
+  {
+    id: "party-space",
+    title: 'Need A "Space" To Party',
+    tagline: "Private bookings & celebrations",
+    image: partySpace,
+    description:
+      "Birthdays, quinceañeras, corporate mixers, reunions — reserve your own slice of the galaxy. Our team helps coordinate food trucks, music, and decor so you can focus on the fun.",
+    highlights: ["Private event bookings", "Custom food truck lineup", "Indoor & outdoor space", "All-ages celebrations"],
+    externalLink: {
+      label: "Register here",
+      url: "https://forms.gle/h67k1pRpSqLYjqmEA",
+    },
+  },
+];
+
+const SectionCard = ({ s, onClick }: { s: Section; onClick: () => void }) => {
+  const inner = (
+    <>
+      <div className="relative aspect-[4/3] overflow-hidden">
+        <img
+          src={s.image}
+          alt={`${s.title} at Area 51 Food Park`}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+        <div className="absolute left-4 top-4 rounded-full bg-primary/90 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary-foreground">
+          {s.href ? "Visit page" : "Click to view"}
+        </div>
+      </div>
+      <div className="p-5">
+        <h3 className="font-display text-2xl font-bold tracking-tight">{s.title}</h3>
+        <p className="mt-1 text-sm text-muted-foreground">{s.tagline}</p>
+        <span className="mt-4 inline-flex items-center text-sm font-semibold text-primary transition-transform group-hover:translate-x-1">
+          Explore <ArrowRight className="ml-1 h-4 w-4" />
+        </span>
+      </div>
+    </>
+  );
+
+  if (s.href) {
+    return (
+      <Link
+        id={s.id}
+        to={s.href}
+        className="card-cosmic group text-left scroll-mt-24"
+        aria-label={`Open ${s.title} page`}
+      >
+        {inner}
+      </Link>
+    );
+  }
+
+  return (
+    <button
+      id={s.id}
+      onClick={onClick}
+      className="card-cosmic group text-left scroll-mt-24"
+      aria-label={`Open ${s.title} details`}
+    >
+      {inner}
+    </button>
+  );
+};
+
+const Sections = () => {
+  const [active, setActive] = useState<Section | null>(null);
+
+  return (
+    <section className="container py-16 md:py-24">
+      <div className="mx-auto mb-12 max-w-2xl text-center">
+        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">Explore the park</p>
+        <h2 className="mt-3 font-display text-3xl font-bold sm:text-4xl">
+          Four experiences. One landing zone.
+        </h2>
+        <p className="mt-3 text-muted-foreground">
+          Tap any section to learn more about what makes Area 51 the most fun spot on Potranco Rd.
+        </p>
+      </div>
+
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        {sections.map((s) => (
+          <SectionCard key={s.id} s={s} onClick={() => !s.href && setActive(s)} />
+        ))}
+      </div>
+
+      <Dialog open={!!active} onOpenChange={(o) => !o && setActive(null)}>
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto border-border bg-card p-0">
+          {active && (
+            <>
+              <div className="relative aspect-video">
+                <img src={active.image} alt={active.title} className="h-full w-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
+              </div>
+              <div className="p-6">
+                <DialogHeader>
+                  <DialogTitle className="font-display text-3xl text-gradient-alien">{active.title}</DialogTitle>
+                  <DialogDescription className="text-base text-muted-foreground">
+                    {active.tagline}
+                  </DialogDescription>
+                </DialogHeader>
+                <p className="mt-4 text-foreground/90">
+                  {active.boldLead && <strong className="font-bold text-foreground">{active.boldLead} </strong>}
+                  {active.description}
+                </p>
+                <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+                  {active.highlights.map((h) => (
+                    <li key={h} className="flex items-center gap-2 text-sm">
+                      <span className="h-1.5 w-1.5 rounded-full bg-primary" /> {h}
+                    </li>
+                  ))}
+                </ul>
+                {active.externalLink && (
+                  <a
+                    href={active.externalLink.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-flex items-center gap-2 font-semibold text-primary underline-offset-4 hover:underline"
+                  >
+                    {active.externalLink.label} <ArrowRight className="h-4 w-4" />
+                  </a>
+                )}
+                <a
+                  href="tel:+12102141748"
+                  className="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-gradient-cta px-5 py-3 font-semibold text-primary-foreground transition-opacity hover:opacity-90 sm:w-auto"
+                >
+                  Call to learn more — (210) 214-1748
+                </a>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
+    </section>
+  );
+};
+
+export default Sections;
