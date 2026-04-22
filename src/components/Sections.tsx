@@ -33,9 +33,15 @@ const sections: Section[] = [
     image: soccer,
     description:
       "Lace up and hit the pitch. Our on-site soccer field hosts pickup games, weekend leagues, and watch parties for the matches that matter most.",
-    highlights: ["On-site field", "League & pickup play", "Live match watch parties", "Family viewing area"],
+    highlights: [
+      "On-site field",
+      "League & pickup play",
+      "Live match watch parties",
+      "Family viewing area",
+    ],
     href: "/soccer",
   },
+
   {
     id: "food-trucks",
     title: "Food Trucks",
@@ -55,44 +61,71 @@ const sections: Section[] = [
       "Pollo Al Carbon",
     ],
   },
+
   {
     id: "events",
     title: "Events",
     tagline: "Live music every weekend",
     image: events,
     description:
-      "Friday and Saturday nights come alive with live bands, DJs, and themed events. Private bookings welcome for birthdays, parties, and corporate gatherings.",
-    highlights: ["Live music Fri & Sat", "Themed nights", "Private event bookings", "All-ages welcome"],
-    externalLink: {
-      label: "Looking for vendors? Register here",
-      url: "https://forms.gle/ddTJoXK5LDoGSvdD7",
-    },
+      "Friday and Saturday nights come alive with live bands, DJs, and themed events.,
+
+    highlights: [
+      "Live music Fri & Sat",
+      "Themed nights",
+      "Vendor & performer opportunities",
+      "All-ages welcome",
+    ],
+
+    externalLinks: [
+      {
+        label: "Vendors Registration",
+        url: "https://forms.gle/ddTJoXK5LDoGSvdD7",
+        description:
+          "Become a vendor at Area 51 Food Park and showcase your business to a high-traffic, family-friendly community. We welcome food, drinks, clothing, toys, jewelry, handmade goods, and more. Vendor hours are Friday 5PM–10PM, Saturday 5PM–10PM, and Sunday 12PM–5PM."
+      },
+      {
+        label: "Bands / Performers Registration",
+        url: "https://forms.gle/e7MAers8qVkQwyzv6",
+        description:
+          "We book live performers on a first-come, first-served basis. There is no cost to perform. Set times typically range from 2–4 hours. Performers receive a 50% discount on food and beverages and keep 100% of tips. We welcome all music genres and entertainment styles."
+      }
+    ]
   },
+
   {
     id: "after-hours",
     title: "Area 51 After Hours",
-    tagline: "Fridays & Saturdays · Casino Entertainment · 18+ Entry Minimum, 21+ Alcohol",
+    tagline:
+      "Fridays & Saturdays · Casino Entertainment · 18+ Entry Minimum, 21+ Alcohol",
     image: afterHours,
     boldLead: "Private Entertainment.",
     description:
-      "After dark, the park shifts into a high-energy nightlife zone — a fusion of casino glamour and bold, after-hours edge. Picture neon-lit tables, pulsing party lights, and women in striking nightlife looks bringing the room to life. It's all show, all atmosphere, all vibe — a cosmic lounge built for grown folks who want a night they'll actually remember.",
+      "After dark, the park shifts into a high-energy nightlife zone — a fusion of casino glamour and bold, after-hours edge. Neon lights, music, and immersive atmosphere create a unique nightlife experience.",
     highlights: [
       "$20 entry at the door",
       "Casino tables, lights & party atmosphere",
-      "Alcohol service & pole dancing",
-      "Entertainment only — no real money or gambling",
+      "Alcohol service & entertainment",
+      "Entertainment only — no real gambling",
       "No inappropriate behavior tolerated",
       "ID check required before entering",
     ],
   },
+
   {
     id: "party-space",
     title: 'Need A "Space" To Party',
     tagline: "Private bookings & celebrations",
     image: partySpace,
     description:
-      "Birthdays, quinceañeras, corporate mixers, reunions — reserve your own slice of the galaxy. Our team helps coordinate food trucks, music, and decor so you can focus on the fun.",
-    highlights: ["Private event bookings", "Custom food truck lineup", "Indoor & outdoor space", "All-ages celebrations"],
+      "Private bookings are available for birthdays, parties, corporate gatherings, graduations, gender reveals, proposals, and more. Reserve your own slice of the galaxy. Our team helps coordinate food trucks, music, decor, and activies so you can focus on the fun.",
+    highlights: [
+      "Private event bookings",
+      "Custom food truck lineup",
+      "Outdoor space",
+      "All-ages celebrations",
+      "Bouncy houses/ Bull Riding/ Water Guns/ Nerf Guns",
+    ],
     externalLink: {
       label: "Register here",
       url: "https://forms.gle/h67k1pRpSqLYjqmEA",
