@@ -274,36 +274,36 @@ const Sections = () => {
                   {active.boldLead && <strong className="font-bold text-foreground">{active.boldLead} </strong>}
                   {active.description}
                 </p>
-                {active.flyers && (
+               {active.flyers?.length ? (
   <div className="mt-6">
     <h4 className="text-sm font-semibold uppercase tracking-wide text-accent mb-3">
       Upcoming Weekly Events
     </h4>
 
     <div className="grid grid-cols-2 gap-4">
-      {active.flyers.map((f) => (
-        <div
-          key={f.title}
-          className="rounded-lg overflow-hidden border border-border"
-        >
-       <img
-  src={f.image}
-  alt={f.title}
-  onClick={() => setSelectedFlyer(f.image)}
-  className="h-40 w-full object-cover hover:scale-105 transition cursor-pointer"
-/>
-          <p className="p-2 text-xs text-center text-muted-foreground">
-            {f.title}
-          </p>
-        </div>
-      ))}
+{active.flyers.map((f) => (
+  <div
+      key={f.title}
+      className="rounded-lg overflow-hidden border border-border"
+    >
+      <img
+        src={f.image}
+        alt={f.title}
+        onClick={() => setSelectedFlyer(f.image)}
+        className="h-40 w-full object-cover hover:scale-105 transition cursor-pointer"
+      />
+      <p className="p-2 text-xs text-center text-muted-foreground">
+        {f.title}
+      </p>
     </div>
+  ))}
+</div>
 
     <p className="mt-4 text-sm text-muted-foreground">
       Monthly Events: <span className="font-semibold">No upcoming monthly events</span>
     </p>
   </div>
-)}
+) : null}
                 <ul className="mt-5 grid gap-2 sm:grid-cols-2">
                   {active.highlights.map((h) => (
                     <li key={h} className="flex items-center gap-2 text-sm">
