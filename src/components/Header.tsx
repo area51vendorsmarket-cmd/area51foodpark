@@ -10,7 +10,7 @@ const links = [
   { href: "#food-trucks", label: "Food Trucks" },
   { href: "#events", label: "Events" },
   { href: "#after-hours", label: "Area 51 After Hours" },
-  { href: "#party-space", label: "Need A Space To Party" },
+  { href: "#party-space", label: "Need A "Space" To Party" },
   { href: "#visit", label: "Visit" },
 ];
 
