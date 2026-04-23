@@ -9,6 +9,7 @@ import afterHours from "@/assets/after-hours.jpg";
 import partySpace from "@/assets/party-space.jpg";
 
 type Section = {
+  comingSoon?: boolean;
   id: string;
   title: string;
   tagline: string;
@@ -99,6 +100,7 @@ const sections: Section[] = [
     tagline:
       "Fridays & Saturdays · Casino Entertainment · 18+ Entry Minimum, 21+ Alcohol",
     image: afterHours,
+    comingSoon: true,
     boldLead: "Private Entertainment.",
     description:
       "After dark, the park shifts into a high-energy nightlife zone — a fusion of casino glamour and bold, after-hours edge. Neon lights, music, and immersive atmosphere create a unique nightlife experience.",
@@ -136,29 +138,45 @@ const sections: Section[] = [
 ];
 
 const SectionCard = ({ s, onClick }: { s: Section; onClick: () => void }) => {
-  const inner = (
-    <>
-      <div className="relative aspect-[4/3] overflow-hidden">
-        <img
-          src={s.image}
-          alt={`${s.title} at Area 51 Food Park`}
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
-        <div className="absolute left-4 top-4 rounded-full bg-primary/90 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary-foreground">
-          {s.href ? "Visit page" : "Click to view"}
+ const inner = (
+  <>
+    {/* IMAGE SECTION */}
+    <div className="relative aspect-[4/3] overflow-hidden">
+      <img
+        src={s.image}
+        alt={`${s.title} at Area 51 Food Park`}
+        loading="lazy"
+        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+      />
+
+      {/* gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+
+      {/* optional COMING SOON */}
+      {s.comingSoon && (
+        <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+          <span className="text-white font-bold text-lg tracking-widest border border-white px-4 py-2">
+            COMING SOON
+          </span>
         </div>
+      )}
+
+      {/* badge */}
+      <div className="absolute left-4 top-4 rounded-full bg-primary/90 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary-foreground">
+        {s.href ? "Visit page" : "Click to view"}
       </div>
-      <div className="p-5">
-        <h3 className="font-display text-2xl font-bold tracking-tight">{s.title}</h3>
-        <p className="mt-1 text-sm text-muted-foreground">{s.tagline}</p>
-        <span className="mt-4 inline-flex items-center text-sm font-semibold text-primary transition-transform group-hover:translate-x-1">
-          Explore <ArrowRight className="ml-1 h-4 w-4" />
-        </span>
-      </div>
-    </>
-  );
+    </div>
+
+    {/* TEXT SECTION */}
+    <div className="p-5">
+      <h3 className="font-display text-2xl font-bold tracking-tight">{s.title}</h3>
+      <p className="mt-1 text-sm text-muted-foreground">{s.tagline}</p>
+      <span className="mt-4 inline-flex items-center text-sm font-semibold text-primary transition-transform group-hover:translate-x-1">
+        Explore <ArrowRight className="ml-1 h-4 w-4" />
+      </span>
+    </div>
+  </>
+);
 
   if (s.href) {
     return (
@@ -212,6 +230,13 @@ const Sections = () => {
             <>
               <div className="relative aspect-video">
                 <img src={active.image} alt={active.title} className="h-full w-full object-cover" />
+                {active.comingSoon && (
+  <div className="absolute inset-0 bg-black/70 flex items-center justify-center">
+    <span className="text-white font-bold text-2xl tracking-widest border border-white px-6 py-3">
+      COMING SOON
+    </span>
+  </div>
+)}
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
               </div>
               <div className="p-6">
