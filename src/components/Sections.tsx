@@ -1,17 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, X } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import foodTrucks from "@/assets/food-trucks.jpg";
 import soccer from "@/assets/soccer.jpg";
 import events from "@/assets/events.jpg";
 import afterHours from "@/assets/after-hours.jpg";
 import partySpace from "@/assets/party-space.jpg";
-
-type SectionLink = {
-  label: string;
-  url: string;
-};
 
 type Section = {
   id: string;
@@ -22,7 +17,11 @@ type Section = {
   boldLead?: string;
   highlights: string[];
   href?: string;
-  externalLink?: SectionLink;
+  externalLinks?: {
+    label: string;
+    url: string;
+    description?: string;
+  }[];
 };
 
 const sections: Section[] = [
@@ -63,35 +62,36 @@ const sections: Section[] = [
   },
 
   {
-    id: "events",
-    title: "Events",
-    tagline: "Live music every weekend",
-    image: events,
-    description:
-      "Friday and Saturday nights come alive with live bands, DJs, and themed events.,
+  id: "events",
+  title: "Events",
+  tagline: "Live music every weekend",
+  image: events,
+  description:
+    "Friday and Saturday nights come alive with live bands, DJs, and themed events. Private bookings available for parties, birthdays, corporate gatherings, graduations, gender reveals, and more.",
 
-    highlights: [
-      "Live music Fri & Sat",
-      "Themed nights",
-      "Vendor & performer opportunities",
-      "All-ages welcome",
-    ],
+  highlights: [
+    "Live music Fri & Sat",
+    "Themed nights",
+    "Vendor opportunities",
+    "Performer bookings",
+    "All-ages welcome",
+  ],
 
-    externalLinks: [
-      {
-        label: "Vendors Registration",
-        url: "https://forms.gle/ddTJoXK5LDoGSvdD7",
-        description:
-          "Become a vendor at Area 51 Food Park and showcase your business to a high-traffic, family-friendly community. We welcome food, drinks, clothing, toys, jewelry, handmade goods, and more. Vendor hours are Friday 5PM–10PM, Saturday 5PM–10PM, and Sunday 12PM–5PM."
-      },
-      {
-        label: "Bands / Performers Registration",
-        url: "https://forms.gle/e7MAers8qVkQwyzv6",
-        description:
-          "We book live performers on a first-come, first-served basis. There is no cost to perform. Set times typically range from 2–4 hours. Performers receive a 50% discount on food and beverages and keep 100% of tips. We welcome all music genres and entertainment styles."
-      }
-    ]
-  },
+  externalLinks: [
+    {
+      label: "Vendors Registration",
+      url: "https://forms.gle/ddTJoXK5LDoGSvdD7",
+      description:
+        "Become a vendor at Area 51 Food Park. We welcome food, drinks, clothing, toys, jewelry, handmade goods, and more. Vendor hours are Friday 5PM–10PM, Saturday 5PM–10PM, and Sunday 12PM–5PM."
+    },
+    {
+      label: "Bands / Performers Registration",
+      url: "https://forms.gle/e7MAers8qVkQwyzv6",
+      description:
+        "Live performers are booked on a first-come, first-served basis. No cost to perform. Sets range from 2–4 hours. Performers keep 100% of tips and receive 50% off food and beverages. All genres welcome."
+    }
+  ]
+},
 
   {
     id: "after-hours",
@@ -126,10 +126,12 @@ const sections: Section[] = [
       "All-ages celebrations",
       "Bouncy houses/ Bull Riding/ Water Guns/ Nerf Guns",
     ],
-    externalLink: {
-      label: "Register here",
-      url: "https://forms.gle/h67k1pRpSqLYjqmEA",
-    },
+   externalLinks: [
+  {
+    label: "Register here",
+    url: "https://forms.gle/h67k1pRpSqLYjqmEA",
+  }
+],
   },
 ];
 
@@ -230,22 +232,29 @@ const Sections = () => {
                     </li>
                   ))}
                 </ul>
-                {active.externalLink && (
-                  <a
-                    href={active.externalLink.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-5 inline-flex items-center gap-2 font-semibold text-primary underline-offset-4 hover:underline"
-                  >
-                    {active.externalLink.label} <ArrowRight className="h-4 w-4" />
-                  </a>
-                )}
-                <a
-                  href="tel:+12102141748"
-                  className="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-gradient-cta px-5 py-3 font-semibold text-primary-foreground transition-opacity hover:opacity-90 sm:w-auto"
-                >
-                  Call to learn more — (210) 214-1748
-                </a>
+             {active.externalLinks?.map((link) => (
+  <div
+    key={link.url}
+    className="mt-5 rounded-lg border border-border p-4 hover:bg-muted/50 transition"
+  >
+    <a
+      href={link.url}
+      target="_blank"
+      rel="noopener noreferrer"
+     className="flex items-center justify-between font-semibold text-primary hover:underline"
+    >
+      {link.label}
+      <ArrowRight className="h-4 w-4" />
+    </a>
+
+    {link.description && (
+      <p className="mt-2 text-sm text-muted-foreground">
+        {link.description}
+      </p>
+    )}
+  </div>
+))}
+               
               </div>
             </>
           )}
