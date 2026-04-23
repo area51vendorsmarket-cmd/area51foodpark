@@ -32,7 +32,7 @@ const sections: Section[] = [
     tagline: "Pickup games & league nights",
     image: soccer,
     description:
-      "Lace up and hit the pitch. Our on-site soccer field hosts pickup games, weekend leagues, and watch parties for the matches that matter most.",
+      "Where aliens kick it on the field. Our on-site soccer field hosts pickup games, weekend leagues, and watch parties for the matches that matter most.",
     highlights: [
       "On-site field",
       "League & pickup play",
