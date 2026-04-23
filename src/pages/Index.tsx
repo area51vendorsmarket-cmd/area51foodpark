@@ -6,6 +6,7 @@ import Reviews from "@/components/Reviews";
 import Visit from "@/components/Visit";
 import Footer from "@/components/Footer";
 import MobileCallBar from "@/components/MobileCallBar";
+import FAQSection from "@/components/FAQSection";
 
 const Index = () => (
   <div className="min-h-screen">
@@ -16,6 +17,7 @@ const Index = () => (
       <About />
       <Reviews />
       <Visit />
+      <FAQSection />
     </main>
     <Footer />
     <MobileCallBar />
