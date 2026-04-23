@@ -211,7 +211,7 @@ const Sections = () => {
       <div className="mx-auto mb-12 max-w-2xl text-center">
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">Explore the park</p>
         <h2 className="mt-3 font-display text-3xl font-bold sm:text-4xl">
-          Four experiences. One landing zone.
+          Your local space for everything fun.
         </h2>
         <p className="mt-3 text-muted-foreground">
           Tap any section to learn more about what makes Area 51 the most fun spot on Potranco Rd.
