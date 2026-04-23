@@ -7,6 +7,8 @@ import soccer from "@/assets/soccer.jpg";
 import events from "@/assets/events.jpg";
 import afterHours from "@/assets/after-hours.jpg";
 import partySpace from "@/assets/party-space.jpg";
+import cosmicNight from "@/assets/cosmic-night.jpg";
+import sundayFamily from "@/assets/sunday-family.jpg";
 
 type Section = {
   comingSoon?: boolean;
@@ -18,10 +20,16 @@ type Section = {
   boldLead?: string;
   highlights: string[];
   href?: string;
+
   externalLinks?: {
     label: string;
     url: string;
     description?: string;
+  }[];
+
+  flyers?: {
+    title: string;
+    image: string;
   }[];
 };
 
@@ -62,7 +70,7 @@ const sections: Section[] = [
     ],
   },
 
-  {
+{
   id: "events",
   title: "Events",
   tagline: "Live music every weekend",
@@ -89,9 +97,20 @@ const sections: Section[] = [
       label: "Bands / Performers Registration",
       url: "https://forms.gle/e7MAers8qVkQwyzv6",
       description:
-        "Live performers are booked on a first-come, first-served basis. No cost to perform. Sets range from 2–4 hours. Performers keep 100% of tips and receive 50% off food and beverages. All genres welcome."
+        "Live performers are booked on a first-come, first-served basis. No cost to perform. Sets range from 2–4 hours. Performers keep 100% of tips and receive 50% off food and beverages. All music genres welcome."
     }
-  ]
+  ],
+
+  flyers: [
+    {
+      title: "Friday Night Cosmic Event",
+      image: cosmicNight,
+    },
+    {
+      title: "Sunday Family Day",
+      image: sundayFamily,
+    }
+  ],
 },
 
   {
@@ -116,7 +135,7 @@ const sections: Section[] = [
 
   {
     id: "party-space",
-    title: 'Need A Space To Party',
+    title: "Need A Space To Party",
     tagline: "Private bookings & celebrations",
     image: partySpace,
     description:
@@ -205,6 +224,7 @@ const SectionCard = ({ s, onClick }: { s: Section; onClick: () => void }) => {
 
 const Sections = () => {
   const [active, setActive] = useState<Section | null>(null);
+  const [selectedFlyer, setSelectedFlyer] = useState<string | null>(null);
 
   return (
     <section className="container py-16 md:py-24">
@@ -254,6 +274,36 @@ const Sections = () => {
                   {active.boldLead && <strong className="font-bold text-foreground">{active.boldLead} </strong>}
                   {active.description}
                 </p>
+                {active.flyers && (
+  <div className="mt-6">
+    <h4 className="text-sm font-semibold uppercase tracking-wide text-accent mb-3">
+      Upcoming Weekly Events
+    </h4>
+
+    <div className="grid grid-cols-2 gap-4">
+      {active.flyers.map((f) => (
+        <div
+          key={f.title}
+          className="rounded-lg overflow-hidden border border-border"
+        >
+       <img
+  src={f.image}
+  alt={f.title}
+  onClick={() => setSelectedFlyer(f.image)}
+  className="h-40 w-full object-cover hover:scale-105 transition cursor-pointer"
+/>
+          <p className="p-2 text-xs text-center text-muted-foreground">
+            {f.title}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <p className="mt-4 text-sm text-muted-foreground">
+      Monthly Events: <span className="font-semibold">No upcoming monthly events</span>
+    </p>
+  </div>
+)}
                 <ul className="mt-5 grid gap-2 sm:grid-cols-2">
                   {active.highlights.map((h) => (
                     <li key={h} className="flex items-center gap-2 text-sm">
@@ -289,6 +339,19 @@ const Sections = () => {
           )}
         </DialogContent>
       </Dialog>
+     {selectedFlyer && (
+  <div
+    className="fixed inset-0 z-[999] bg-black/90 flex items-center justify-center"
+    onClick={() => setSelectedFlyer(null)}
+  >
+    <img
+      src={selectedFlyer}
+      alt="Flyer Fullscreen"
+      onClick={(e) => e.stopPropagation()}
+      className="max-h-[90vh] max-w-[90vw] object-contain rounded-lg shadow-2xl"
+    />
+  </div>
+)}
     </section>
   );
 };
