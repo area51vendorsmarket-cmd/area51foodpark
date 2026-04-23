@@ -7,8 +7,6 @@ import soccer from "@/assets/soccer.jpg";
 import events from "@/assets/events.jpg";
 import afterHours from "@/assets/after-hours.jpg";
 import partySpace from "@/assets/party-space.jpg";
-import cosmicNight from "@/assets/cosmic-night.png";
-import sundayFamily from "@/assets/sunday-family.png";
 import rentingImg from "@/assets/renting.jpg";
 
 type Section = {
@@ -102,16 +100,14 @@ const sections: Section[] = [
     }
   ],
 
-  flyers: [
-    {
-      title: "Friday Night Cosmic Event",
-      image: cosmicNight,
-    },
-    {
-      title: "Sunday Family Day",
-      image: sundayFamily,
-    }
-  ],
+ flyers: [
+  {
+    title: "Friday Night Cosmic Event",
+  },
+  {
+    title: "Sunday Family Day",
+  }
+],
 },
 
   {
@@ -247,8 +243,7 @@ const SectionCard = ({ s, onClick }: { s: Section; onClick: () => void }) => {
 
 const Sections = () => {
   const [active, setActive] = useState<Section | null>(null);
-  const [selectedFlyer, setSelectedFlyer] = useState<string | null>(null);
-
+  
   return (
     <section className="container py-16 md:py-24">
 <div className="mx-auto mb-12 max-w-2xl text-center">
@@ -272,109 +267,87 @@ const Sections = () => {
       </div>
 
       <Dialog open={!!active} onOpenChange={(o) => !o && setActive(null)}>
-        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto border-border bg-card p-0">
-          {active && (
-            <>
-              <div className="relative aspect-video">
-                <img src={active.image} alt={active.title} className="h-full w-full object-cover" />
-                {active.comingSoon && (
-  <div className="absolute inset-0 bg-black/70 flex items-center justify-center">
-    <span className="text-white font-bold text-2xl tracking-widest border border-white px-6 py-3">
-      COMING SOON
-    </span>
-  </div>
-)}
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
-              </div>
-              <div className="p-6">
-                <DialogHeader>
-                  <DialogTitle className="font-display text-3xl text-gradient-alien">{active.title}</DialogTitle>
-                  <DialogDescription className="text-base text-muted-foreground">
-                    {active.tagline}
-                  </DialogDescription>
-                </DialogHeader>
-                <p className="mt-4 text-foreground/90">
-                  {active.boldLead && <strong className="font-bold text-foreground">{active.boldLead} </strong>}
-                  {active.description}
-                </p>
-               {active.flyers?.length ? (
-  <div className="mt-6">
-    <h4 className="text-sm font-semibold uppercase tracking-wide text-accent mb-3">
-      Upcoming Weekly Events
-    </h4>
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto border-border bg-card p-0">
+  {active && (
+    <>
+      {/* IMAGE */}
+      <div className="relative aspect-video">
+        <img
+          src={active.image}
+          alt={active.title}
+          className="h-full w-full object-cover"
+        />
 
-    <div className="grid grid-cols-2 gap-4">
-{active.flyers.map((f) => (
-  <div
-      key={f.title}
-      className="rounded-lg overflow-hidden border border-border"
-    >
-      <img
-        src={f.image}
-        alt={f.title}
-        onClick={() => setSelectedFlyer(f.image)}
-        className="h-40 w-full object-cover hover:scale-105 transition cursor-pointer"
-      />
-      <p className="p-2 text-xs text-center text-muted-foreground">
-        {f.title}
-      </p>
-    </div>
-  ))}
-</div>
+        {active.comingSoon && (
+          <div className="absolute inset-0 bg-black/70 flex items-center justify-center">
+            <span className="text-white font-bold text-2xl tracking-widest border border-white px-6 py-3">
+              COMING SOON
+            </span>
+          </div>
+        )}
 
-    <p className="mt-4 text-sm text-muted-foreground">
-      Monthly Events: <span className="font-semibold">No upcoming monthly events</span>
-    </p>
-  </div>
-) : null}
-                <ul className="mt-5 grid gap-2 sm:grid-cols-2">
-                  {active.highlights.map((h) => (
-                    <li key={h} className="flex items-center gap-2 text-sm">
-                      <span className="h-1.5 w-1.5 rounded-full bg-primary" /> {h}
-                    </li>
-                  ))}
-                </ul>
-             {active.externalLinks?.map((link) => (
-  <div
-    key={link.url}
-    className="mt-5 rounded-lg border border-border p-4 hover:bg-muted/50 transition"
-  >
-    <a
-      href={link.url}
-      target="_blank"
-      rel="noopener noreferrer"
-     className="flex items-center justify-between font-semibold text-primary hover:underline"
-    >
-      {link.label}
-      <ArrowRight className="h-4 w-4" />
-    </a>
+        <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
+      </div>
 
-    {link.description && (
-      <p className="mt-2 text-sm text-muted-foreground">
-        {link.description}
-      </p>
-    )}
-  </div>
-))}
-               
-              </div>
-            </>
+      {/* CONTENT */}
+      <div className="p-6">
+        <DialogHeader>
+          <DialogTitle className="font-display text-3xl text-gradient-alien">
+            {active.title}
+          </DialogTitle>
+
+          <DialogDescription className="text-base text-muted-foreground">
+            {active.tagline}
+          </DialogDescription>
+        </DialogHeader>
+
+        <p className="mt-4 text-foreground/90">
+          {active.boldLead && (
+            <strong className="font-bold text-foreground">
+              {active.boldLead}{" "}
+            </strong>
           )}
-        </DialogContent>
+          {active.description}
+        </p>
+
+        <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+          {active.highlights.map((h) => (
+            <li key={h} className="flex items-center gap-2 text-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+              {h}
+            </li>
+          ))}
+        </ul>
+
+        {active.externalLinks?.map((link) => (
+          <div
+            key={link.url}
+            className="mt-5 rounded-lg border border-border p-4 hover:bg-muted/50 transition"
+          >
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between font-semibold text-primary hover:underline"
+            >
+              {link.label}
+              <ArrowRight className="h-4 w-4" />
+            </a>
+
+            {link.description && (
+              <p className="mt-2 text-sm text-muted-foreground">
+                {link.description}
+              </p>
+            )}
+          </div>
+        ))}
+      </div>
+    </>
+  )}
+
+</DialogContent>
       </Dialog>
-     {selectedFlyer && (
-  <div
-    className="fixed inset-0 z-[999] bg-black/90 flex items-center justify-center"
-    onClick={() => setSelectedFlyer(null)}
-  >
-    <img
-      src={selectedFlyer}
-      alt="Flyer Fullscreen"
-      onClick={(e) => e.stopPropagation()}
-      className="max-h-[90vh] max-w-[90vw] object-contain rounded-lg shadow-2xl"
-    />
-  </div>
-)}
+
     </section>
   );
 };
