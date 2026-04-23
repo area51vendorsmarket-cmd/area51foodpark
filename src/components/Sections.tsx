@@ -32,10 +32,10 @@ const sections: Section[] = [
     tagline: "Pickup games & league nights",
     image: soccer,
     description:
-      "Where aliens kick it on the field. Our on-site soccer field hosts pickup games, weekend leagues, and watch parties for the matches that matter most.",
+      "Where aliens kick it on the field. Our on-site soccer field hosts soccer games/practices, weekend leagues, and watch parties for the matches that matter most.",
     highlights: [
       "On-site field",
-      "League & pickup play",
+      "Multiple sized fields",
       "Live match watch parties",
       "Family viewing area",
     ],
@@ -68,7 +68,7 @@ const sections: Section[] = [
   tagline: "Live music every weekend",
   image: events,
   description:
-    "Friday and Saturday nights come alive with live bands, DJs, and themed events. Private bookings available for parties, birthdays, corporate gatherings, graduations, gender reveals, and more.",
+    "Friday and Saturday nights come alive with live bands, DJs, and themed events. We have vendors Fridays, Saturdays, and Sunday so come shop around!",
 
   highlights: [
     "Live music Fri & Sat",
@@ -116,7 +116,7 @@ const sections: Section[] = [
 
   {
     id: "party-space",
-    title: 'Need A \"Space\" To Party',
+    title: 'Need A Space To Party',
     tagline: "Private bookings & celebrations",
     image: partySpace,
     description:
