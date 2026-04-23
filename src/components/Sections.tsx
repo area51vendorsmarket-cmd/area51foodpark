@@ -154,6 +154,28 @@ const sections: Section[] = [
   }
 ],
   },
+  {
+  id: "renting",
+  title: "Renting",
+  tagline: "Book your space at Area 51",
+  image: partySpace,
+  description:
+    "Rent space at Area 51 Food Park with our volleyball sand pit, soccer fields, and tables. Flexible options available for all types of bookings.",
+  highlights: [
+    "Private event rentals",
+    "Volleyball sand pit rental",
+    "Soccer field rental",
+    "Table rentals",
+    "Flexible scheduling",
+  ],
+  externalLinks: [
+    {
+      label: "Rent Now",
+      url: "https://forms.gle/2Kr5kkgdipxokw12A",
+      description: "Fill out our rental request form to get started.",
+    },
+  ],
+},
 ];
 
 const SectionCard = ({ s, onClick }: { s: Section; onClick: () => void }) => {
