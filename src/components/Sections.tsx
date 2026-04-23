@@ -9,6 +9,9 @@ import afterHours from "@/assets/after-hours.jpg";
 import partySpace from "@/assets/party-space.jpg";
 import cosmicNight from "@/assets/cosmic-night.jpg";
 import sundayFamily from "@/assets/sunday-family.jpg";
+import rentingImg from "@/assets/renting.jpg";
+console.log("cosmicNight:", cosmicNight);
+console.log("sundayFamily:", sundayFamily);
 
 type Section = {
   comingSoon?: boolean;
@@ -158,7 +161,7 @@ const sections: Section[] = [
   id: "renting",
   title: "Renting",
   tagline: "Book your space at Area 51",
-  image: partySpace,
+  image: rentingImg,
   description:
     "Rent space at Area 51 Food Park with our volleyball sand pit, soccer fields, and tables. Flexible options available for all types of bookings.",
   highlights: [
@@ -258,6 +261,8 @@ const Sections = () => {
   <h2 className="mt-3 font-display text-3xl font-bold sm:text-4xl">
     Your local space for everything fun.
   </h2>
+  <img src={cosmicNight} className="w-40" />
+<img src={sundayFamily} className="w-40" />
 
   <p className="mt-3 text-muted-foreground">
     Tap any section to learn more about what makes Area 51 the most fun spot on Potranco Rd.
