@@ -96,7 +96,7 @@ const sections: Section[] = [
       label: "Bands / Performers Registration",
       url: "https://forms.gle/e7MAers8qVkQwyzv6",
       description:
-        "Live performers are booked on a first-come, first-served basis. No cost to perform. Sets range from 2–4 hours. Performers keep 100% of tips and receive 50% off food and beverages. All music genres welcome."
+        "Area 51 accepts musicians, comedians, and other talent on a first come basis. Although we do not normally pay performers we do announces for tips and offer a 50% food discount plus free beverages. ",
     }
   ],
 
@@ -157,7 +157,7 @@ const sections: Section[] = [
   tagline: "Book your space at Area 51",
   image: rentingImg,
   description:
-    "Rent space at Area 51 Food Park with our volleyball sand pit, soccer fields, and tables. Flexible options available for all types of bookings.",
+    "Rent space at Area 51 Food Park with our sand volleyball court, soccer fields, and tables. Flexible options available for all types of bookings.",
   highlights: [
     "Private event rentals",
     "Volleyball sand pit rental",
